@@ -3,6 +3,17 @@ const list = document.querySelector('ul')
 const btnMostrarTudo = document.getElementById('mostar-tudo')
 const btnMaperTudo = document.getElementById('maper-tudo')
 const btnSomarValue = document.getElementById('somar-value')
+const btnFiltrarProduto = document.getElementById('filtar-produtos')
+
+//Formatar moeda
+function formatCurrency(value) {
+    const newValue = value.toLocaleString("pt-br", {
+    style: "currency",
+    currency: "BRL",
+})
+
+    return newValue
+}
 
 //Apresentar os itens na tela.
 function mostrarTudo(myArrayProduct) {
@@ -12,7 +23,7 @@ function mostrarTudo(myArrayProduct) {
             <li>
                 <img src=${product.src}>
                 <p>${product.name}</p>
-                <p class="price-product">R$ ${product.price}</p>
+                <p class="price-product"> ${formatCurrency(product.price)}</p>
             </li>
         `
     })
@@ -38,7 +49,7 @@ function somarValue(){
     //Apresentar valores na tela
     list.innerHTML = `
         <li>
-            <p> Valor total dos Produtos: R$ ${valueTotal.toFixed(2)}</p>
+            <p> Valor total dos Produtos: ${formatCurrency(valueTotal)}</p>
         </li>
     `
 
@@ -46,7 +57,15 @@ function somarValue(){
     //curr - Valor corrente / Atual
 }
 
+// Filtrar produtos
+function filterDrink(){
+    const filterDrinks = menuOptions.filter((product) => product.bebida === true)
+
+    mostrarTudo(filterDrinks)
+}
+
 //Evendo, quando clicar no botão chamas as funções
 btnMostrarTudo.addEventListener("click", () => mostrarTudo(menuOptions)) //Todo vez que precisar passar um dado detro do addEventListener é preciso colocar a função anonina na frente'() =>'.
 btnMaperTudo.addEventListener("click", maperTudo)
 btnSomarValue.addEventListener("click", somarValue)
+btnFiltrarProduto.addEventListener("click", filterDrink)

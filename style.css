@@ -16,7 +16,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin: 1.2rem 0;
+    margin: 1rem 0;
 }
 
 li{
@@ -34,7 +34,7 @@ button {
     font-weight: 400;
     padding: .3rem 0;
     width: 110px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 button:hover {
@@ -46,8 +46,9 @@ button:hover {
     list-style: none;
     display: grid;
     grid-template-columns: 200px 200px 200px;
-    gap: 3rem;
+    gap: 2.5rem;
     justify-content: center;
+    margin-bottom: 1rem;
 }
 
 img {
